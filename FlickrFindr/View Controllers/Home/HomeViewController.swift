@@ -79,4 +79,16 @@ class HomeViewController: UIViewController, CollectionHandler, UICollectionViewD
 
         return CGSize(width: itemSize, height: itemSize)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let photo = photoPage?.photos[indexPath.row] else {
+            return
+        }
+        
+        let fullScreenViewer = FullScreenImageViewController(withPhoto: photo)
+        fullScreenViewer.modalPresentationStyle = .fullScreen
+        
+        present(fullScreenViewer, animated: true, completion: nil)
+    }
 }
