@@ -9,11 +9,21 @@
 import UIKit
 import Foundation
 
-typealias CollectionHandler = UICollectionViewDataSource & UICollectionViewDelegate
+extension Constants {
+    
+    struct HomeScreen {
+        
+        static let showingRecent = "Recent Uploads"
+        static let showingResults = "Results for: "
+    }
+}
 
-class HomeViewController: UIViewController, CollectionHandler, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    
+    // MARK: - Properties
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var showingLabel: UILabel!
     
     var photoPage: PhotoPage? {
         didSet {
@@ -41,10 +51,14 @@ class HomeViewController: UIViewController, CollectionHandler, UICollectionViewD
         let photoPageUrl: String
         
         if let searchTerm = searchTerm, !searchTerm.isEmpty {
+            
             photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm)
+            showingLabel.text = Constants.HomeScreen.showingResults + "\"\(searchTerm)\""
         }
         else {
+            
             photoPageUrl = PhotoPage.recentsUrl()
+            showingLabel.text = Constants.HomeScreen.showingRecent
         }
         
         WebService.getPhotoPage(forUrl: photoPageUrl) { response in
