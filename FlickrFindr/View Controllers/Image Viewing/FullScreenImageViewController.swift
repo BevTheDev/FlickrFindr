@@ -36,24 +36,7 @@ class FullScreenImageViewController: UIViewController {
         titleLabel.text = photo.title
         
         let imageUrl = photo.imageUrl(forSize: .fullscreen)
-        
-        WebService.getPhotoImage(fromUrlString: imageUrl) { [weak self] response in
-            
-            guard let self = self else {
-                return
-            }
-            
-            guard case .success(let image) = response else {
-                
-                print("Image load failed")
-                self.imageView.image = nil
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = image
-            }
-        }
+        imageView.loadWebImage(fromUrl: imageUrl)
     }
     
     // MARK: - IBActions
