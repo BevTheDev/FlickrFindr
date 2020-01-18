@@ -13,7 +13,7 @@ extension WebService {
     
     static func getPhotoPage(completion: @escaping (WebResponse<PhotoPage>) -> Void) {
         
-        let urlString = WebService.urlString(forMethod: .recentPhotos)
+        let urlString = PhotoPage.pageUrl(forPageType: .recentPhotos)
         
         print("Sending request: \(urlString)")
         

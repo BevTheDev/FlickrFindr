@@ -26,6 +26,23 @@ class PhotoPage: Decodable {
         case pageNumber = "page"
         case photos = "photo"
     }
+
+    enum PageType: String {
+        case recentPhotos = "flickr.photos.getRecent"
+        case search = "flickr.photos.search"
+    }
+    
+    static func pageUrl(forPageType pageType: PageType) -> String {
+        
+        typealias Keys = Constants.Networking
+
+        return "\(Keys.baseUrl)"
+            + "?method=\(pageType.rawValue)"
+            + "&api_key=\(Keys.apiKey)"
+            + "&per_page=\(Keys.maxPerPage)"
+            + "&format=json"
+            + "&nojsoncallback=1"
+    }
 }
 
 class Photo: Decodable {

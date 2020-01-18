@@ -12,5 +12,6 @@ struct Constants {
         
         static let baseUrl = "https://www.flickr.com/services/rest/"
         static let apiKey = "1508443e49213ff84d566777dc211f2a"
+        static let maxPerPage = "25"
     }
 }

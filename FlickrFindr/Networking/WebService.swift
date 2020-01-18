@@ -18,20 +18,6 @@ enum HTTPMethod: String {
     case post = "POST"
 }
 
-enum RequestMethod {
-    case recentPhotos
-    case search
-    
-    var paramName: String {
-        switch self {
-        case .recentPhotos:
-            return "flickr.photos.getRecent"
-        case .search:
-            return "flickr.photos.search"
-        }
-    }
-}
-
 class WebService {
     
     // MARK: - Standard Request Function
@@ -70,18 +56,5 @@ class WebService {
         }
         
         task.resume()
-    }
-    
-    // MARK: - Helpers
-    
-    static func urlString(forMethod method: RequestMethod) -> String {
-        
-        typealias Keys = Constants.Networking
-        
-        return "\(Keys.baseUrl)"
-        + "?method=\(method.paramName)"
-        + "&api_key=\(Keys.apiKey)"
-        + "&format=json"
-        + "&nojsoncallback=1"
     }
 }
