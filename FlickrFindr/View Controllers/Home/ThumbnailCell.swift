@@ -12,6 +12,7 @@ class ThumbnailCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleBackdropView: UIView!
     
     static let nibName = "ThumbnailCell"
     
@@ -19,7 +20,10 @@ class ThumbnailCell: UICollectionViewCell {
     
     func setUp(withTitle title: String, thumbUrl: String) {
         
+        contentView.layer.cornerRadius = 15
+        
         titleLabel.text = title
+        titleBackdropView.isHidden = title.isEmpty
         
         WebService.getPhotoImage(fromUrlString: thumbUrl) { [weak self] response in
             

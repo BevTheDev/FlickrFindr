@@ -11,7 +11,7 @@ import Foundation
 
 typealias CollectionHandler = UICollectionViewDataSource & UICollectionViewDelegate
 
-class HomeViewController: UIViewController, CollectionHandler {
+class HomeViewController: UIViewController, CollectionHandler, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -68,5 +68,15 @@ class HomeViewController: UIViewController, CollectionHandler {
         cell.setUp(withTitle: title, thumbUrl: thumbUrl)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let padding = CGFloat(10)
+        let numColumns = CGFloat(2)
+
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + padding)) / numColumns
+
+        return CGSize(width: itemSize, height: itemSize)
     }
 }

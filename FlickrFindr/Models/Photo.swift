@@ -55,7 +55,7 @@ class Photo: Decodable {
     
     enum PhotoSize: String {
         case fullscreen = "z"
-        case thumbnail = "t"
+        case thumbnail = "q"
     }
     
     func imageUrl(forSize size: PhotoSize) -> String {
