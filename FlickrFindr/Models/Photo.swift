@@ -8,6 +8,20 @@
 
 import Foundation
 
+// MARK: - Enums
+
+enum PageType: String {
+    case recentPhotos = "flickr.photos.getRecent"
+    case search = "flickr.photos.search"
+}
+
+enum PhotoSize: String {
+    case fullscreen = "z"
+    case thumbnail = "q"
+}
+
+// MARK: - Decodable Photo Models
+
 class PhotosResponse: Decodable {
     
     let photoPage: PhotoPage
@@ -26,18 +40,25 @@ class PhotoPage: Decodable {
         case pageNumber = "page"
         case photos = "photo"
     }
+    
+    static func searchUrl(forSearchTerm searchTerm: String) -> String {
 
-    enum PageType: String {
-        case recentPhotos = "flickr.photos.getRecent"
-        case search = "flickr.photos.search"
+        let method = "\(PageType.search.rawValue)&text=\(searchTerm)"
+        return pageUrl(withMethodParams: method)
     }
     
-    static func pageUrl(forPageType pageType: PageType) -> String {
+    static func recentsUrl() -> String {
+
+        let method = PageType.recentPhotos.rawValue
+        return pageUrl(withMethodParams: method)
+    }
+    
+    private static func pageUrl(withMethodParams params: String) -> String {
         
         typealias Keys = Constants.Networking
 
         return "\(Keys.baseUrl)"
-            + "?method=\(pageType.rawValue)"
+            + "?method=\(params)"
             + "&api_key=\(Keys.apiKey)"
             + "&per_page=\(Keys.maxPerPage)"
             + "&format=json"
@@ -52,11 +73,6 @@ class Photo: Decodable {
     let farm: Int
     let secret: String
     let server: String
-    
-    enum PhotoSize: String {
-        case fullscreen = "z"
-        case thumbnail = "q"
-    }
     
     func imageUrl(forSize size: PhotoSize) -> String {
         //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)

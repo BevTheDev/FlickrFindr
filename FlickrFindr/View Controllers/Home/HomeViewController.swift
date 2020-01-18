@@ -11,7 +11,7 @@ import Foundation
 
 typealias CollectionHandler = UICollectionViewDataSource & UICollectionViewDelegate
 
-class HomeViewController: UIViewController, CollectionHandler, UICollectionViewDelegateFlowLayout {
+class HomeViewController: UIViewController, CollectionHandler, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -31,14 +31,23 @@ class HomeViewController: UIViewController, CollectionHandler, UICollectionViewD
         
         collectionView.register(UINib(nibName: ThumbnailCell.nibName, bundle: Bundle.main), forCellWithReuseIdentifier: ThumbnailCell.nibName)
         
-        loadRecentPhotos()
+        loadPhotos()
     }
     
     // MARK: - Photo Loading
     
-    func loadRecentPhotos() {
+    func loadPhotos(forSearchTerm searchTerm: String? = nil) {
         
-        WebService.getPhotoPage() { response in
+        let photoPageUrl: String
+        
+        if let searchTerm = searchTerm, !searchTerm.isEmpty {
+            photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm)
+        }
+        else {
+            photoPageUrl = PhotoPage.recentsUrl()
+        }
+        
+        WebService.getPhotoPage(forUrl: photoPageUrl) { response in
             
             guard case .success(let responsePhotoPage) = response else {
                 
@@ -90,5 +99,14 @@ class HomeViewController: UIViewController, CollectionHandler, UICollectionViewD
         fullScreenViewer.modalPresentationStyle = .fullScreen
         
         present(fullScreenViewer, animated: true, completion: nil)
+    }
+    
+    // MARK: - Search
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        loadPhotos(forSearchTerm: searchBar.text)
+        
+        searchBar.resignFirstResponder()
     }
 }

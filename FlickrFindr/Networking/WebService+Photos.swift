@@ -11,9 +11,7 @@ import UIKit
 
 extension WebService {
     
-    static func getPhotoPage(completion: @escaping (WebResponse<PhotoPage>) -> Void) {
-        
-        let urlString = PhotoPage.pageUrl(forPageType: .recentPhotos)
+    static func getPhotoPage(forUrl urlString: String, completion: @escaping (WebResponse<PhotoPage>) -> Void) {
         
         print("Sending request: \(urlString)")
         
