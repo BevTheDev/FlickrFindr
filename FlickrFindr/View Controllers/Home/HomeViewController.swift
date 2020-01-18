@@ -9,16 +9,27 @@
 import UIKit
 import Foundation
 
-class HomeViewController: UIViewController {
+typealias CollectionHandler = UICollectionViewDataSource & UICollectionViewDelegate
+
+class HomeViewController: UIViewController, CollectionHandler {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var photoPage: PhotoPage? {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        collectionView.register(UINib(nibName: ThumbnailCell.nibName, bundle: Bundle.main), forCellWithReuseIdentifier: ThumbnailCell.nibName)
         
         loadRecentPhotos()
     }
@@ -32,40 +43,30 @@ class HomeViewController: UIViewController {
             guard case .success(let responsePhotoPage) = response else {
                 
                 print("Failed to load photo page")
+                self.photoPage = nil
                 return
             }
             
-            if let photo = responsePhotoPage.photos.first {
-                
-                let fullImageUrl = photo.imageUrl(forSize: .fullscreen)
-                let thumbUrl = photo.imageUrl(forSize: .thumbnail)
-                
-                WebService.getPhotoImage(fromUrlString: fullImageUrl) { response in
-                    
-                    guard case .success(let image) = response else {
-                        
-                        print("Image load failed")
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
-                }
-                
-                WebService.getPhotoImage(fromUrlString: thumbUrl) { response in
-                    
-                    guard case .success(let image) = response else {
-                        
-                        print("Image load failed")
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.thumbnailImageView.image = image
-                    }
-                }
-            }
+            self.photoPage = responsePhotoPage
         }
+    }
+    
+    // MARK: - CollectionView Methods
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photoPage?.photos.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell: ThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.nibName, for: indexPath) as? ThumbnailCell ?? ThumbnailCell()
+        
+        let photo = photoPage?.photos[indexPath.row]
+        let title = photo?.title ?? ""
+        let thumbUrl = photo?.imageUrl(forSize: .thumbnail) ?? ""
+        
+        cell.setUp(withTitle: title, thumbUrl: thumbUrl)
+        
+        return cell
     }
 }
