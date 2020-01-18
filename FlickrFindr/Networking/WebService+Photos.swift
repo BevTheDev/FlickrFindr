@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension WebService {
     
@@ -26,6 +27,26 @@ extension WebService {
                 }
                 catch {
                     completion(.failure("Parse error"))
+                }
+                
+            case .failure(let errorMessage):
+                completion(.failure(errorMessage))
+            }
+        }
+    }
+    
+    static func getPhotoImage(fromUrlString urlString: String, completion: @escaping (WebResponse<UIImage>) -> Void) {
+        
+        WebService.sendRequest(urlString: urlString, method: .get) { response in
+            
+            switch response {
+            case .success(let data):
+                
+                if let image = UIImage(data: data) {
+                    completion(.success(image))
+                }
+                else {
+                    completion(.failure("Failed to retrieve image"))
                 }
                 
             case .failure(let errorMessage):

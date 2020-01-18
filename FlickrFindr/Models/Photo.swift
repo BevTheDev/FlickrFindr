@@ -32,15 +32,17 @@ class Photo: Decodable {
     
     let id: String
     let title: String
+    let farm: Int
+    let secret: String
+    let server: String
     
-//    farm = 66;
-//    id = 49401721457;
-//    isfamily = 0;
-//    isfriend = 0;
-//    ispublic = 1;
-//    owner = "54718757@N00";
-//    secret = 22b7c0b519;
-//    server = 65535;
-//    title = "IMG_20200117_103331";
+    enum PhotoSize: String {
+        case fullscreen = "z"
+        case thumbnail = "t"
+    }
     
+    func imageUrl(forSize size: PhotoSize) -> String {
+        //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
+        return "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).png"
+    }
 }
