@@ -45,6 +45,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         collectionView.register(UINib(nibName: ThumbnailCell.nibName, bundle: Bundle.main), forCellWithReuseIdentifier: ThumbnailCell.nibName)
         
+        stackView.setCustomSpacing(10, after: showingLabel)
+        
         loadPhotos()
     }
     

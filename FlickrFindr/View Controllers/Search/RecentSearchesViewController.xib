@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UY6-0W-a9d">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="WiT-0h-dcI"/>
@@ -31,7 +31,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UY6-0W-a9d" secondAttribute="trailing" id="2gl-hE-dsd"/>
                 <constraint firstItem="UY6-0W-a9d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gWW-38-CgY"/>
-                <constraint firstAttribute="bottom" secondItem="UY6-0W-a9d" secondAttribute="bottom" id="p1p-Ce-jxT"/>
+                <constraint firstAttribute="bottom" secondItem="UY6-0W-a9d" secondAttribute="bottom" constant="10" id="p1p-Ce-jxT"/>
                 <constraint firstItem="UY6-0W-a9d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="v27-gh-BWj"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

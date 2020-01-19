@@ -52,11 +52,22 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.RecentSearches.cellReuseId)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        if recentSearches.isEmpty {
+            view.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
-        tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height).isActive = true
+        if !recentSearches.isEmpty {
+            view.heightAnchor.constraint(equalToConstant: tableView.contentSize.height + 10).isActive = true
+        }
     }
 
     // MARK: - TableView DataSource

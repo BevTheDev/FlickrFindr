@@ -32,20 +32,20 @@
                         <outlet property="delegate" destination="-1" id="GbD-ON-g1V"/>
                     </connections>
                 </searchBar>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="osa-VS-Asw">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="osa-VS-Asw">
                     <rect key="frame" x="10" y="105" width="394" height="791"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing Recent Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Le-20-jE8">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing Recent Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Le-20-jE8">
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="22" id="BCw-TK-4Wj"/>
+                                <constraint firstAttribute="height" constant="21" id="BCw-TK-4Wj"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uVr-j3-4yq">
-                            <rect key="frame" x="0.0" y="32" width="394" height="759"/>
+                            <rect key="frame" x="0.0" y="21" width="394" height="770"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fJX-uE-0Fj">
                                 <size key="itemSize" width="150" height="150"/>
