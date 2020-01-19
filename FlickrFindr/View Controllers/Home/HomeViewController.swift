@@ -122,6 +122,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(fullScreenViewer, animated: true, completion: nil)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        searchBar.resignFirstResponder()
+    }
+    
     // MARK: - Search
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {

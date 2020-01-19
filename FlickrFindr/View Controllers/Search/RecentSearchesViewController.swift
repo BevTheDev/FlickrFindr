@@ -66,12 +66,6 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
             view.heightAnchor.constraint(equalToConstant: tableView.contentSize.height + 10).isActive = true
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
-    }
 
     // MARK: - TableView DataSource
     
