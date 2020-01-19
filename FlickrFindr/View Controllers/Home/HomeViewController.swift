@@ -122,5 +122,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         loadPhotos(forSearchTerm: searchBar.text)
         
         searchBar.resignFirstResponder()
+        
+        // The cancel button disables by default, so re-enable it here during search mode
+        if !(searchBar.text ?? "").isEmpty {
+            
+            searchBar.setCancelEnabled(true)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        loadPhotos()
+        
+        searchBar.resignFirstResponder()
+        searchBar.setCancelEnabled(false)
     }
 }
