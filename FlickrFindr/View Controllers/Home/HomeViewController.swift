@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var showingLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
@@ -138,15 +139,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        loadPhotos(forSearchTerm: searchBar.text)
-        
-        searchBar.resignFirstResponder()
-        
-        // The cancel button disables by default, so re-enable it here during search mode
-        if !(searchBar.text ?? "").isEmpty {
-            
-            searchBar.setCancelEnabled(true)
-        }
+        performSearch()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -160,6 +153,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func didSelectSearchTerm(searchTerm: String) {
         
-        loadPhotos(forSearchTerm: searchTerm)
+        searchBar.text = searchTerm
+        performSearch()
+    }
+    
+    func performSearch() {
+        
+        loadPhotos(forSearchTerm: searchBar.text)
+        
+        searchBar.resignFirstResponder()
+        
+        // The cancel button disables by default, so re-enable it here during search mode
+        if !(searchBar.text ?? "").isEmpty {
+            
+            searchBar.setCancelEnabled(true)
+        }
     }
 }

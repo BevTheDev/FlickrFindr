@@ -18,6 +18,7 @@ extension Constants {
     struct RecentSearches {
         
         static let sectionHeader = "Recent Searches"
+        static let cellReuseId = "SearchCell"
     }
 }
 
@@ -48,7 +49,7 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
         
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.RecentSearches.cellReuseId)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +73,7 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.RecentSearches.cellReuseId) ?? UITableViewCell()
         
         cell.textLabel?.text = recentSearches[indexPath.row]
         
@@ -82,6 +83,8 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         delegate?.didSelectSearchTerm(searchTerm: recentSearches[indexPath.row])
     }

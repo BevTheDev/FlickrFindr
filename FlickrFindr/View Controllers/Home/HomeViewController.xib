@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FlickrFindr" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="uVr-j3-4yq" id="PR3-DA-ie4"/>
+                <outlet property="searchBar" destination="0SP-aV-WQ6" id="BHY-v0-usY"/>
                 <outlet property="showingLabel" destination="9Le-20-jE8" id="K8c-0e-a85"/>
                 <outlet property="stackView" destination="osa-VS-Asw" id="dvq-fK-SQL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="gW7-PC-Gxb"/>
