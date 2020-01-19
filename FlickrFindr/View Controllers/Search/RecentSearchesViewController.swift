@@ -29,7 +29,7 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: RecentSearchDelegate?
-    var recentSearches: [String] = ["Nature"]
+    var recentSearches: [String] = []
     
     // MARK: - Init
     
@@ -56,8 +56,14 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
         
         super.viewWillAppear(animated)
         
+        recentSearches = UserDefaultsManager.getRecentSearches().reversed()
+        tableView.reloadData()
+        
         if recentSearches.isEmpty {
             view.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        else {
+            view.heightAnchor.constraint(equalToConstant: tableView.contentSize.height + 10).isActive = true
         }
     }
     
@@ -65,9 +71,6 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
         
         super.viewDidAppear(animated)
         
-        if !recentSearches.isEmpty {
-            view.heightAnchor.constraint(equalToConstant: tableView.contentSize.height + 10).isActive = true
-        }
     }
 
     // MARK: - TableView DataSource

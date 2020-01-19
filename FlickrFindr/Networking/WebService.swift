@@ -35,8 +35,6 @@ class WebService {
         
         let task = session.dataTask(with: url) { (data, _, error) in
             
-            print("Request complete")
-            
             if let error = error {
                 
                 print("Error: received response error: \(error.localizedDescription)")
@@ -51,7 +49,6 @@ class WebService {
                 return
             }
             
-            print("Received success response")
             completion(.success(data))
         }
         

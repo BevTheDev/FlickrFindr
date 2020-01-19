@@ -60,6 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm)
             showingLabel.text = Constants.HomeScreen.showingResults + "\"\(searchTerm)\""
+            UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
         }
         else {
             
@@ -126,6 +127,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
         addChild(recentSearchVC)
+        recentSearchVC.beginAppearanceTransition(true, animated: false)
         stackView.insertArrangedSubview(recentSearchVC.view, at: 0)
         
         return true
@@ -134,6 +136,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         
         stackView.removeArrangedSubview(recentSearchVC.view)
+        recentSearchVC.endAppearanceTransition()
         recentSearchVC.removeFromParent()
         
         return true
@@ -165,10 +168,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         searchBar.resignFirstResponder()
         
-        // The cancel button disables by default, so re-enable it here during search mode
-        if !(searchBar.text ?? "").isEmpty {
-            
+        if isSearchMode() {
+
+            // The cancel button disables by default, so re-enable it here during search mode
             searchBar.setCancelEnabled(true)
         }
+    }
+    
+    // MARK: - Helpers
+    
+    func isSearchMode() -> Bool {
+        
+        return !(searchBar.text ?? "").isEmpty
     }
 }
