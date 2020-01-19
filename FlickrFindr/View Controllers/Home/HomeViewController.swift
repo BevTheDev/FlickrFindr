@@ -18,12 +18,15 @@ extension Constants {
     }
 }
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, RecentSearchDelegate {
     
     // MARK: - Properties
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var showingLabel: UILabel!
+    
+    lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
     var photoPage: PhotoPage? {
         didSet {
@@ -117,6 +120,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: - Search
     
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        addChild(recentSearchVC)
+        stackView.insertArrangedSubview(recentSearchVC.view, at: 0)
+        
+        return true
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        stackView.removeArrangedSubview(recentSearchVC.view)
+        recentSearchVC.removeFromParent()
+        
+        return true
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         loadPhotos(forSearchTerm: searchBar.text)
@@ -137,5 +156,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         searchBar.resignFirstResponder()
         searchBar.setCancelEnabled(false)
+    }
+    
+    func didSelectSearchTerm(searchTerm: String) {
+        
+        loadPhotos(forSearchTerm: searchTerm)
     }
 }

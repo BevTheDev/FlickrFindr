@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="collectionView" destination="uVr-j3-4yq" id="PR3-DA-ie4"/>
                 <outlet property="showingLabel" destination="9Le-20-jE8" id="K8c-0e-a85"/>
+                <outlet property="stackView" destination="osa-VS-Asw" id="dvq-fK-SQL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="gW7-PC-Gxb"/>
             </connections>
         </placeholder>
@@ -30,42 +31,44 @@
                         <outlet property="delegate" destination="-1" id="GbD-ON-g1V"/>
                     </connections>
                 </searchBar>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing Recent Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Le-20-jE8">
-                    <rect key="frame" x="10" y="105" width="394" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="BCw-TK-4Wj"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uVr-j3-4yq">
-                    <rect key="frame" x="10" y="137" width="394" height="759"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fJX-uE-0Fj">
-                        <size key="itemSize" width="150" height="150"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="dTr-3g-GiN"/>
-                        <outlet property="delegate" destination="-1" id="G1v-ZH-g9K"/>
-                    </connections>
-                </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="osa-VS-Asw">
+                    <rect key="frame" x="10" y="105" width="394" height="791"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing Recent Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Le-20-jE8">
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="BCw-TK-4Wj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uVr-j3-4yq">
+                            <rect key="frame" x="0.0" y="32" width="394" height="759"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fJX-uE-0Fj">
+                                <size key="itemSize" width="150" height="150"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="dTr-3g-GiN"/>
+                                <outlet property="delegate" destination="-1" id="G1v-ZH-g9K"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="uVr-j3-4yq" secondAttribute="bottom" id="0to-mE-dye"/>
-                <constraint firstItem="uVr-j3-4yq" firstAttribute="top" secondItem="9Le-20-jE8" secondAttribute="bottom" constant="10" id="2Aa-c2-HAC"/>
                 <constraint firstItem="0SP-aV-WQ6" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8t6-5R-LE0"/>
-                <constraint firstItem="9Le-20-jE8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="BZg-06-hWV"/>
                 <constraint firstItem="0SP-aV-WQ6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NBV-uZ-CFH"/>
-                <constraint firstItem="9Le-20-jE8" firstAttribute="top" secondItem="0SP-aV-WQ6" secondAttribute="bottom" constant="5" id="Ns3-BY-6AS"/>
-                <constraint firstItem="uVr-j3-4yq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="TZZ-W4-pm6"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uVr-j3-4yq" secondAttribute="trailing" constant="10" id="fNA-V5-RQM"/>
+                <constraint firstAttribute="bottom" secondItem="osa-VS-Asw" secondAttribute="bottom" id="Q9U-a2-bup"/>
+                <constraint firstItem="osa-VS-Asw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="h0M-aB-GME"/>
                 <constraint firstItem="0SP-aV-WQ6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hkD-OJ-2rA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Le-20-jE8" secondAttribute="trailing" constant="10" id="nr5-Yq-p8L"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="osa-VS-Asw" secondAttribute="trailing" constant="10" id="naV-iX-VbM"/>
+                <constraint firstItem="osa-VS-Asw" firstAttribute="top" secondItem="0SP-aV-WQ6" secondAttribute="bottom" constant="5" id="yNs-iJ-MxM"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
