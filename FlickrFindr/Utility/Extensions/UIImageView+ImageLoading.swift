@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView {
     
-    func loadWebImage(fromUrl url: String) {
+    func loadWebImage(fromUrl url: String, completion: (() -> Void)? = nil) {
         
         WebService.getPhotoImage(fromUrlString: url) { [weak self] response in
             
@@ -25,6 +25,7 @@ extension UIImageView {
 
                 DispatchQueue.main.async {
                     self.image = nil
+                    completion?()
                 }
                 
                 return
@@ -32,6 +33,7 @@ extension UIImageView {
             
             DispatchQueue.main.async {
                 self.image = image
+                completion?()
             }
         }
     }

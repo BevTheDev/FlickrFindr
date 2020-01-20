@@ -18,7 +18,7 @@ extension Constants {
     }
 }
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, RecentSearchDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, RecentSearchDelegate, SpinnerShowable {
     
     // MARK: - Properties
     
@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noResultsLabel: UILabel!
     
-    let spinnerView = SpinnerView()
+    var spinnerView = SpinnerView()
     lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
     var photoPages: [PhotoPage] = [] {
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func loadPhotos(forSearchTerm searchTerm: String? = nil, page: Int = 1) {
         
         if page == 1 {
-            showActivitySpinner()
+            showActivitySpinner(fromView: view)
         }
         
         let photoPageUrl: String
@@ -203,24 +203,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
             
-            // The cancel button disables by default, so re-enable it here during search mode
+            // Keep the cancel button enabled during search mode
             searchBar.setCancelEnabled(true)
         }
         else {
             searchBar.setCancelEnabled(false)
         }
-    }
-    
-    // MARK: - Helpers
-    
-    func showActivitySpinner() {
-        
-        view.addSubview(spinnerView)
-        spinnerView.pinEdges(to: view)
-    }
-    
-    func hideActivitySpinner() {
-        
-        spinnerView.removeFromSuperview()
     }
 }

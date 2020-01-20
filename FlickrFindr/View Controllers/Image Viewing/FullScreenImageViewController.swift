@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FullScreenImageViewController: UIViewController {
+class FullScreenImageViewController: UIViewController, SpinnerShowable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     let photo: Photo
+    var spinnerView = SpinnerView()
     
     // MARK: - Init
     
@@ -36,7 +37,12 @@ class FullScreenImageViewController: UIViewController {
         titleLabel.text = photo.title
         
         let imageUrl = photo.imageUrl(forSize: .fullscreen)
-        imageView.loadWebImage(fromUrl: imageUrl)
+        
+        showActivitySpinner(fromView: imageView)
+        
+        imageView.loadWebImage(fromUrl: imageUrl) {
+            self.hideActivitySpinner()
+        }
     }
     
     // MARK: - IBActions
