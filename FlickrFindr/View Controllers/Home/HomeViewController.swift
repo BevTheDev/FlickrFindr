@@ -28,13 +28,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noResultsLabel: UILabel!
     
+    let spinnerView = SpinnerView()
     lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
     var photoPages: [PhotoPage] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
-                self.noResultsLabel.isHidden = !self.photos.isEmpty
             }
         }
     }
@@ -61,6 +61,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadPhotos(forSearchTerm searchTerm: String? = nil, page: Int = 1) {
         
+        if page == 1 {
+            showActivitySpinner()
+        }
+        
         let photoPageUrl: String
         
         if let searchTerm = searchTerm, !searchTerm.isEmpty {
@@ -76,6 +80,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         WebService.getPhotoPage(forUrl: photoPageUrl) { response in
+            
+            defer {
+                DispatchQueue.main.async {
+                    self.noResultsLabel.isHidden = !self.photos.isEmpty
+                    self.hideActivitySpinner()
+                }
+            }
             
             guard case .success(let responsePhotoPage) = response else {
                 
@@ -173,6 +184,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.text = ""
+        photoPages = []
         loadPhotos()
         
         searchBar.resignFirstResponder()
@@ -204,5 +216,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func isSearchMode() -> Bool {
         
         return !(searchBar.text ?? "").isEmpty
+    }
+    
+    func showActivitySpinner() {
+        
+        view.addSubview(spinnerView)
+        spinnerView.pinEdges(to: view)
+    }
+    
+    func hideActivitySpinner() {
+        
+        spinnerView.removeFromSuperview()
     }
 }
