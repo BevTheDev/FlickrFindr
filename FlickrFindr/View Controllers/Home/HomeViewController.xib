@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FlickrFindr" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="uVr-j3-4yq" id="PR3-DA-ie4"/>
+                <outlet property="noResultsLabel" destination="hj6-5e-D4i" id="lmb-k5-SNO"/>
                 <outlet property="searchBar" destination="0SP-aV-WQ6" id="BHY-v0-usY"/>
                 <outlet property="showingLabel" destination="9Le-20-jE8" id="K8c-0e-a85"/>
                 <outlet property="stackView" destination="osa-VS-Asw" id="dvq-fK-SQL"/>
@@ -60,6 +61,12 @@
                         </collectionView>
                     </subviews>
                 </stackView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj6-5e-D4i">
+                    <rect key="frame" x="139" y="438" width="136.5" height="20"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -69,7 +76,9 @@
                 <constraint firstItem="osa-VS-Asw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="h0M-aB-GME"/>
                 <constraint firstItem="0SP-aV-WQ6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hkD-OJ-2rA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="osa-VS-Asw" secondAttribute="trailing" constant="10" id="naV-iX-VbM"/>
+                <constraint firstItem="hj6-5e-D4i" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qvL-FO-x3H"/>
                 <constraint firstItem="osa-VS-Asw" firstAttribute="top" secondItem="0SP-aV-WQ6" secondAttribute="bottom" constant="5" id="yNs-iJ-MxM"/>
+                <constraint firstItem="hj6-5e-D4i" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zgB-NC-xkV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>

@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var showingLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noResultsLabel: UILabel!
     
     lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.noResultsLabel.isHidden = !self.photos.isEmpty
             }
         }
     }
