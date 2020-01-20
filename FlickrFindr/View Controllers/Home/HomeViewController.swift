@@ -71,7 +71,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm, pageNum: page)
             showingLabel.text = Constants.HomeScreen.showingResults + "\"\(searchTerm)\""
-            UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
         }
         else {
             
@@ -184,11 +183,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.text = ""
-        photoPages = []
-        loadPhotos()
-        
-        searchBar.resignFirstResponder()
-        searchBar.setCancelEnabled(false)
+        performSearch()
     }
     
     func didSelectSearchTerm(searchTerm: String) {
@@ -204,19 +199,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         loadPhotos(forSearchTerm: searchBar.text)
         
-        if isSearchMode() {
-
+        if let searchTerm = searchBar.text, !searchTerm.isEmpty {
+            
+            UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
+            
             // The cancel button disables by default, so re-enable it here during search mode
             searchBar.setCancelEnabled(true)
+        }
+        else {
+            searchBar.setCancelEnabled(false)
         }
     }
     
     // MARK: - Helpers
-    
-    func isSearchMode() -> Bool {
-        
-        return !(searchBar.text ?? "").isEmpty
-    }
     
     func showActivitySpinner() {
         
