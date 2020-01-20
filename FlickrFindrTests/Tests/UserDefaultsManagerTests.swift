@@ -10,7 +10,7 @@ import XCTest
 
 @testable import FlickrFindr
 
-class UserDefaultsManagerTests: XCTestCase {
+class UserDefaultsManagerTests: BaseTestCase {
 
     override func setUp() {
         
