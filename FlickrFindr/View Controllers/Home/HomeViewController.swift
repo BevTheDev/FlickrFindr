@@ -29,12 +29,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     lazy var recentSearchVC = RecentSearchesViewController(delegate: self)
     
-    var photoPage: PhotoPage? {
+    var photoPages: [PhotoPage] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    var photos: [Photo] {
+        
+        return photoPages.flatMap { return $0.photos }
     }
     
     // MARK: - View Lifecycle
@@ -52,19 +57,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: - Photo Loading
     
-    func loadPhotos(forSearchTerm searchTerm: String? = nil) {
+    func loadPhotos(forSearchTerm searchTerm: String? = nil, page: Int = 1) {
         
         let photoPageUrl: String
         
         if let searchTerm = searchTerm, !searchTerm.isEmpty {
             
-            photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm)
+            photoPageUrl = PhotoPage.searchUrl(forSearchTerm: searchTerm, pageNum: page)
             showingLabel.text = Constants.HomeScreen.showingResults + "\"\(searchTerm)\""
             UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
         }
         else {
             
-            photoPageUrl = PhotoPage.recentsUrl()
+            photoPageUrl = PhotoPage.recentsUrl(pageNum: page)
             showingLabel.text = Constants.HomeScreen.showingRecent
         }
         
@@ -73,27 +78,40 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             guard case .success(let responsePhotoPage) = response else {
                 
                 print("Failed to load photo page")
-                self.photoPage = nil
                 return
             }
             
-            self.photoPage = responsePhotoPage
+            self.photoPages.append(responsePhotoPage)
         }
+    }
+    
+    func loadNextPage() {
+        
+        guard let currentPage = photoPages.last,
+            currentPage.pageNumber < currentPage.totalPages else {
+                return
+        }
+        
+        loadPhotos(forSearchTerm: searchBar.text, page: currentPage.pageNumber + 1)
     }
     
     // MARK: - CollectionView Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoPage?.photos.count ?? 0
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if indexPath.row == photos.count - 1 {
+            loadNextPage()
+        }
+        
         let cell: ThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.nibName, for: indexPath) as? ThumbnailCell ?? ThumbnailCell()
         
-        let photo = photoPage?.photos[indexPath.row]
-        let title = photo?.title ?? ""
-        let thumbUrl = photo?.imageUrl(forSize: .thumbnail) ?? ""
+        let photo = photos[indexPath.row]
+        let title = photo.title
+        let thumbUrl = photo.imageUrl(forSize: .thumbnail)
         
         cell.setUp(withTitle: title, thumbUrl: thumbUrl)
         
@@ -112,9 +130,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let photo = photoPage?.photos[indexPath.row] else {
-            return
-        }
+        let photo = photos[indexPath.row]
         
         let fullScreenViewer = FullScreenImageViewController(withPhoto: photo)
         fullScreenViewer.modalPresentationStyle = .fullScreen
@@ -169,9 +185,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func performSearch() {
         
-        loadPhotos(forSearchTerm: searchBar.text)
-        
+        photoPages = []
         searchBar.resignFirstResponder()
+        
+        loadPhotos(forSearchTerm: searchBar.text)
         
         if isSearchMode() {
 

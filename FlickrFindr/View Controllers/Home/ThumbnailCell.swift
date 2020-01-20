@@ -24,6 +24,7 @@ class ThumbnailCell: UICollectionViewCell {
         
         titleLabel.text = title
         titleBackdropView.isHidden = title.isEmpty
+        imageView.image = nil
         
         imageView.loadWebImage(fromUrl: thumbUrl)
     }
