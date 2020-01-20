@@ -37,18 +37,19 @@ class NetworkMocker {
     static func addDefaultStubs() {
         
         stubAllRequestsWithFailure()
-        
+
         stubRecentUploadsRequest(withPageNum: 1)
         stubRecentUploadsRequest(withPageNum: 2)
         stubSearchRequest()
         stubSearchRequestWithNoResults()
+        stubFullScreenImageRequest()
     }
     
     // MARK: - Stubs
     
     static func stub(
         forPath path: String,
-        query: String,
+        query: String? = nil,
         httpMethod: HTTPMethod = .get,
         responseFileName: String,
         responseStatus: Int = 200,

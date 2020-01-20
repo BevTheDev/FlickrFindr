@@ -16,9 +16,9 @@ struct RequestSignature: Equatable {
 
     let path: String
     let method: HTTPMethod
-    let query: String
+    let query: String?
     
-    init(path: String, method: HTTPMethod, query: String) {
+    init(path: String, method: HTTPMethod, query: String?) {
         
         self.path = path
         self.method = method
@@ -29,7 +29,7 @@ struct RequestSignature: Equatable {
         
         let path = request.url?.path ?? ""
         let method = HTTPMethod(rawValue: request.httpMethod ?? "") ?? .get
-        let query = request.url?.query ?? ""
+        let query = request.url?.query
         
         self.init(path: path, method: method, query: query)
     }

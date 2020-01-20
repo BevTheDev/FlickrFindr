@@ -40,6 +40,7 @@ class FullScreenImageViewController: UIViewController, SpinnerShowable {
         
         showActivitySpinner(fromView: imageView)
         
+        print("Fullscreen: \(imageUrl)")
         imageView.loadWebImage(fromUrl: imageUrl) {
             self.hideActivitySpinner()
         }

@@ -18,8 +18,7 @@ class HomeViewControllerTests: BaseTestCase {
         let pageUpdateExpectation = expectation(description: "photoPages property should update")
         testVC.pageUpdateExpectation = pageUpdateExpectation
         
-        testVC.loadView()
-        testVC.viewDidLoad()
+        testVC.triggerOpeningLifecycle()
         
         wait(for: [pageUpdateExpectation], timeout: 1)
         
@@ -54,8 +53,7 @@ class HomeViewControllerTests: BaseTestCase {
         let pageLoadExpectation = expectation(description: "Wait for first page to load")
         testVC.pageUpdateExpectation = pageLoadExpectation
         
-        testVC.loadView()
-        testVC.viewDidLoad()
+        testVC.triggerOpeningLifecycle()
         
         wait(for: [pageLoadExpectation], timeout: 1)
         

@@ -23,6 +23,6 @@ class Photo: Decodable {
     let server: String
     
     func imageUrl(forSize size: PhotoSize) -> String {
-        return "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).png"
+        return "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).jpg"
     }
 }

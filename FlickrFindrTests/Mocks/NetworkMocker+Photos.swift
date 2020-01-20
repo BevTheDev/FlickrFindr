@@ -30,4 +30,10 @@ extension NetworkMocker {
         query: "method=flickr.photos.search&text=noResults&api_key=1508443e49213ff84d566777dc211f2a&per_page=25&page=1&format=json&nojsoncallback=1",
         responseFileName: "no_results.json")
     }
+    
+    static func stubFullScreenImageRequest() {
+        
+        stub(forPath: "/444/123_secret123_z.jpg",
+        responseFileName: "cat.jpg")
+    }
 }

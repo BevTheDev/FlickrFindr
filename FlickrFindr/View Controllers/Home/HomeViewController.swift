@@ -160,8 +160,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
         addChild(recentSearchVC)
-        recentSearchVC.beginAppearanceTransition(true, animated: false)
         stackView.insertArrangedSubview(recentSearchVC.view, at: 0)
+        recentSearchVC.beginAppearanceTransition(true, animated: false)
         
         return true
     }
