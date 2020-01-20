@@ -16,7 +16,6 @@
 		9699AA9C23D279BA004FA1C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9699AA9B23D279BA004FA1C1 /* AppDelegate.swift */; };
 		9699AAA823D279BB004FA1C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9699AAA723D279BB004FA1C1 /* Assets.xcassets */; };
 		9699AAAB23D279BB004FA1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9699AAA923D279BB004FA1C1 /* LaunchScreen.storyboard */; };
-		9699AAB623D279BB004FA1C1 /* FlickrFindrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9699AAB523D279BB004FA1C1 /* FlickrFindrTests.swift */; };
 		9699AAC423D28227004FA1C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9699AAC223D28227004FA1C1 /* HomeViewController.swift */; };
 		9699AAC523D28227004FA1C1 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9699AAC323D28227004FA1C1 /* HomeViewController.xib */; };
 		9699AACA23D28491004FA1C1 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9699AAC923D28491004FA1C1 /* WebService.swift */; };
@@ -31,6 +30,9 @@
 		96BEF52223D53E4E00E1D075 /* UIView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52123D53E4E00E1D075 /* UIView+Convenience.swift */; };
 		96BEF52423D542FA00E1D075 /* PinnableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52323D542FA00E1D075 /* PinnableView.swift */; };
 		96BEF52923D54C0E00E1D075 /* SpinnerShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52823D54C0E00E1D075 /* SpinnerShowable.swift */; };
+		96BEF52C23D566A100E1D075 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52B23D566A100E1D075 /* UserDefaultsManagerTests.swift */; };
+		96BEF52E23D5696000E1D075 /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52D23D5696000E1D075 /* PhotosResponse.swift */; };
+		96BEF53023D5697800E1D075 /* PhotoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BEF52F23D5697800E1D075 /* PhotoPage.swift */; };
 		A578F71726043CD6DF9A2DBD /* Pods_FlickrFindr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AF0F945A2FF110382DD5B /* Pods_FlickrFindr.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +60,6 @@
 		9699AAAA23D279BB004FA1C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9699AAAC23D279BB004FA1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9699AAB123D279BB004FA1C1 /* FlickrFindrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrFindrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9699AAB523D279BB004FA1C1 /* FlickrFindrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrFindrTests.swift; sourceTree = "<group>"; };
 		9699AAB723D279BB004FA1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9699AAC223D28227004FA1C1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9699AAC323D28227004FA1C1 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +75,10 @@
 		96BEF52123D53E4E00E1D075 /* UIView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Convenience.swift"; sourceTree = "<group>"; };
 		96BEF52323D542FA00E1D075 /* PinnableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableView.swift; sourceTree = "<group>"; };
 		96BEF52823D54C0E00E1D075 /* SpinnerShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerShowable.swift; sourceTree = "<group>"; };
+		96BEF52A23D566A100E1D075 /* FlickrFindrTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrFindrTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		96BEF52B23D566A100E1D075 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
+		96BEF52D23D5696000E1D075 /* PhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponse.swift; sourceTree = "<group>"; };
+		96BEF52F23D5697800E1D075 /* PhotoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPage.swift; sourceTree = "<group>"; };
 		9C64C96035E62B31F04F67A5 /* Pods_FlickrFindrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrFindrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DED819ECE3267C2F82AD98 /* Pods-FlickrFindrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrFindrTests.release.xcconfig"; path = "Target Support Files/Pods-FlickrFindrTests/Pods-FlickrFindrTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB8AF0F945A2FF110382DD5B /* Pods_FlickrFindr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrFindr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,8 +172,9 @@
 		9699AAB423D279BB004FA1C1 /* FlickrFindrTests */ = {
 			isa = PBXGroup;
 			children = (
-				9699AAB523D279BB004FA1C1 /* FlickrFindrTests.swift */,
 				9699AAB723D279BB004FA1C1 /* Info.plist */,
+				96BEF52B23D566A100E1D075 /* UserDefaultsManagerTests.swift */,
+				96BEF52A23D566A100E1D075 /* FlickrFindrTests-Bridging-Header.h */,
 			);
 			path = FlickrFindrTests;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				9699AACB23D294F4004FA1C1 /* Photo.swift */,
+				96BEF52D23D5696000E1D075 /* PhotosResponse.swift */,
+				96BEF52F23D5697800E1D075 /* PhotoPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +339,7 @@
 					};
 					9699AAB023D279BB004FA1C1 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 						TestTargetID = 9699AA9723D279BA004FA1C1;
 					};
 				};
@@ -446,6 +455,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96BEF52E23D5696000E1D075 /* PhotosResponse.swift in Sources */,
+				96BEF53023D5697800E1D075 /* PhotoPage.swift in Sources */,
 				96BEF52223D53E4E00E1D075 /* UIView+Convenience.swift in Sources */,
 				9699AA9C23D279BA004FA1C1 /* AppDelegate.swift in Sources */,
 				96BEF52423D542FA00E1D075 /* PinnableView.swift in Sources */,
@@ -469,7 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9699AAB623D279BB004FA1C1 /* FlickrFindrTests.swift in Sources */,
+				96BEF52C23D566A100E1D075 /* UserDefaultsManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +664,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4A3LJ9GY5H;
 				INFOPLIST_FILE = FlickrFindrTests/Info.plist;
@@ -664,6 +676,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevthedev.FlickrFindrTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlickrFindrTests/FlickrFindrTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlickrFindr.app/FlickrFindr";
@@ -676,6 +690,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4A3LJ9GY5H;
 				INFOPLIST_FILE = FlickrFindrTests/Info.plist;
@@ -687,6 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevthedev.FlickrFindrTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlickrFindrTests/FlickrFindrTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlickrFindr.app/FlickrFindr";

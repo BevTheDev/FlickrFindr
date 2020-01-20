@@ -175,6 +175,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return true
     }
     
+    // MARK: Search Actions
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         performSearch()
@@ -191,6 +193,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         searchBar.text = searchTerm
         performSearch()
     }
+    
+    // MARK: Search Logic
     
     func performSearch() {
         
