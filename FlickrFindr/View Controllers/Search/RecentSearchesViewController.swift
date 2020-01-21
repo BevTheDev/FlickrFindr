@@ -27,6 +27,7 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     weak var delegate: RecentSearchDelegate?
     var recentSearches: [String] = []
@@ -60,11 +61,13 @@ class RecentSearchesViewController: UIViewController, UITableViewDelegate, UITab
         tableView.reloadData()
         
         if recentSearches.isEmpty {
-            view.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            heightConstraint.constant = 0
         }
         else {
-            view.heightAnchor.constraint(equalToConstant: tableView.contentSize.height + 10).isActive = true
+            heightConstraint.constant = tableView.contentSize.height + 10
         }
+        
+        view.layoutIfNeeded()
     }
 
     // MARK: - TableView DataSource

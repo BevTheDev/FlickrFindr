@@ -162,6 +162,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         addChild(recentSearchVC)
         stackView.insertArrangedSubview(recentSearchVC.view, at: 0)
         recentSearchVC.beginAppearanceTransition(true, animated: false)
+        stackView.layoutIfNeeded()
         
         return true
     }

@@ -9,7 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecentSearchesViewController" customModule="FlickrFindr" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="UY6-0W-a9d" id="XHw-LK-Maz"/>
+                <outlet property="heightConstraint" destination="Rc0-9R-V1I" id="Fgy-XI-seD"/>
+                <outlet property="tableView" destination="UY6-0W-a9d" id="inE-FO-BSR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,21 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UY6-0W-a9d">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOp-wg-hy8" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UY6-0W-a9d">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="WiT-0h-dcI"/>
+                                <outlet property="delegate" destination="-1" id="kIb-fp-mvB"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="WiT-0h-dcI"/>
-                        <outlet property="delegate" destination="-1" id="kIb-fp-mvB"/>
-                    </connections>
-                </tableView>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="UY6-0W-a9d" secondAttribute="bottom" priority="999" constant="10" id="9rI-si-F8O"/>
+                        <constraint firstAttribute="height" constant="896" id="Rc0-9R-V1I"/>
+                        <constraint firstItem="UY6-0W-a9d" firstAttribute="leading" secondItem="pOp-wg-hy8" secondAttribute="leading" id="TrL-92-pOc"/>
+                        <constraint firstItem="UY6-0W-a9d" firstAttribute="top" secondItem="pOp-wg-hy8" secondAttribute="top" id="eAG-TA-vZs"/>
+                        <constraint firstAttribute="trailing" secondItem="UY6-0W-a9d" secondAttribute="trailing" id="t2t-SW-Uf2"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UY6-0W-a9d" secondAttribute="trailing" id="2gl-hE-dsd"/>
-                <constraint firstItem="UY6-0W-a9d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gWW-38-CgY"/>
-                <constraint firstAttribute="bottom" secondItem="UY6-0W-a9d" secondAttribute="bottom" priority="999" constant="10" id="p1p-Ce-jxT"/>
-                <constraint firstItem="UY6-0W-a9d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="v27-gh-BWj"/>
+                <constraint firstItem="pOp-wg-hy8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="10g-wt-YKV"/>
+                <constraint firstItem="pOp-wg-hy8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KJG-yf-Kks"/>
+                <constraint firstAttribute="trailing" secondItem="pOp-wg-hy8" secondAttribute="trailing" id="Uz4-eL-L27"/>
+                <constraint firstAttribute="bottom" secondItem="pOp-wg-hy8" secondAttribute="bottom" id="bJE-tV-kAW"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
