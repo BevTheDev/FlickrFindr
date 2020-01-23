@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +12,52 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3s-1K-Ewj">
+                                <rect key="frame" x="87" y="339.5" width="240" height="217"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="O4u-gH-MEX">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="170" id="1Ql-gD-9uZ"/>
+                                            <constraint firstAttribute="width" constant="240" id="mGc-E0-Wb8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flickr Findr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yce-eG-gnS">
+                                        <rect key="frame" x="0.0" y="170" width="240" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Yce-eG-gnS" secondAttribute="bottom" id="CeR-hI-7ah"/>
+                                    <constraint firstItem="Yce-eG-gnS" firstAttribute="leading" secondItem="J3s-1K-Ewj" secondAttribute="leading" id="Ivh-g2-bJc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yce-eG-gnS" secondAttribute="trailing" id="Mqv-y4-STS"/>
+                                    <constraint firstItem="O4u-gH-MEX" firstAttribute="leading" secondItem="J3s-1K-Ewj" secondAttribute="leading" id="YFV-rD-YYI"/>
+                                    <constraint firstAttribute="trailing" secondItem="O4u-gH-MEX" secondAttribute="trailing" id="r8U-el-OGQ"/>
+                                    <constraint firstItem="Yce-eG-gnS" firstAttribute="top" secondItem="O4u-gH-MEX" secondAttribute="bottom" id="u1Q-ls-4XO"/>
+                                    <constraint firstItem="O4u-gH-MEX" firstAttribute="top" secondItem="J3s-1K-Ewj" secondAttribute="top" id="wa4-qB-C8Y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="J3s-1K-Ewj" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Iu-pL-Mgh"/>
+                            <constraint firstItem="J3s-1K-Ewj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nJO-6h-WTp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="256" height="256"/>
+    </resources>
 </document>

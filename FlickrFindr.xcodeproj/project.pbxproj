@@ -76,7 +76,7 @@
 		9690D89423D3A5EC007639B3 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		9690D89523D3A5EC007639B3 /* FullScreenImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenImageViewController.xib; sourceTree = "<group>"; };
 		9690D89823D3B50A007639B3 /* UIImageView+ImageLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageLoading.swift"; sourceTree = "<group>"; };
-		9699AA9823D279BA004FA1C1 /* FlickrFindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrFindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9699AA9823D279BA004FA1C1 /* Flickr Findr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flickr Findr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9699AA9B23D279BA004FA1C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9699AAA723D279BB004FA1C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9699AAAA23D279BB004FA1C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		9699AA9923D279BA004FA1C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9699AA9823D279BA004FA1C1 /* FlickrFindr.app */,
+				9699AA9823D279BA004FA1C1 /* Flickr Findr.app */,
 				9699AAB123D279BB004FA1C1 /* FlickrFindrTests.xctest */,
 			);
 			name = Products;
@@ -398,7 +398,7 @@
 			);
 			name = FlickrFindr;
 			productName = FlickrFindr;
-			productReference = 9699AA9823D279BA004FA1C1 /* FlickrFindr.app */;
+			productReference = 9699AA9823D279BA004FA1C1 /* Flickr Findr.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9699AAB023D279BB004FA1C1 /* FlickrFindrTests */ = {
@@ -751,7 +751,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevthedev.FlickrFindr;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = FlickrFindr;
+				PRODUCT_NAME = "Flickr Findr";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -770,7 +771,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevthedev.FlickrFindr;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = FlickrFindr;
+				PRODUCT_NAME = "Flickr Findr";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -798,7 +800,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlickrFindr.app/FlickrFindr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flickr Findr.app/Flickr Findr";
 			};
 			name = Debug;
 		};
@@ -823,7 +825,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "FlickrFindrTests/FlickrFindrTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlickrFindr.app/FlickrFindr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flickr Findr.app/Flickr Findr";
 			};
 			name = Release;
 		};
