@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // The HomeVC will display a paged list of recent uploads. This works without the
+        // stub, but occasionally returns some... rather awkward results :/
+        // So this replaces the real network response with two pages of demo-safe images.
+        // Only applies to the flickr.photos.getRecent method. flickr.photos.search provides
+        // a safe option, so it uses real network responses.
+        stubRecentUploads()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         
@@ -23,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func stubRecentUploads() {
+        
+        NetworkMocker.stubRecentUploadsRequest(withPageNum: 1, responseTime: 0.5)
+        NetworkMocker.stubRecentUploadsRequest(withPageNum: 2, responseTime: 0.5)
     }
 }
 

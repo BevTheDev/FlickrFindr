@@ -24,7 +24,7 @@ class HomeViewControllerTests: BaseTestCase {
         
         XCTAssertEqual(testVC.photoPages.count, 1)
         XCTAssertEqual(testVC.photos.count, 25)
-        XCTAssertEqual(testVC.photos.first?.title, "Recent Uploads Page 1 Photo")
+        XCTAssertEqual(testVC.photos.first?.title, "2020-01-20_09-29-49")
         XCTAssertEqual(testVC.showingLabel.text, "Recent Uploads")
     }
     
@@ -66,7 +66,7 @@ class HomeViewControllerTests: BaseTestCase {
         
         XCTAssertEqual(testVC.photoPages.count, 2)
         XCTAssertEqual(testVC.photos.count, 50)
-        XCTAssertEqual(testVC.photos[25].title, "Recent Uploads Page 2 Photo")
+        XCTAssertEqual(testVC.photos[25].title, "Lunchtime Light Show")
     }
     
     func testSearchCancelButtonClicked() {

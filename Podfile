@@ -10,9 +10,12 @@ project 'FlickrFindr'
 
 target 'FlickrFindr' do
 
+  # This would normally only be in the test target,
+  # but is included in the main target here for demo purposes
+  pod 'OHHTTPStubs/Swift'
+  
   # Testing
   target 'FlickrFindrTests' do
     inherit! :search_paths
-    pod 'OHHTTPStubs/Swift'
   end
 end

@@ -10,11 +10,12 @@ import OHHTTPStubs
 
 extension NetworkMocker {
     
-    static func stubRecentUploadsRequest(withPageNum page: Int) {
+    static func stubRecentUploadsRequest(withPageNum page: Int, responseTime: TimeInterval = 0) {
         
         stub(forPath: "/services/rest",
              query: "method=flickr.photos.getRecent&api_key=1508443e49213ff84d566777dc211f2a&per_page=25&page=\(page)&format=json&nojsoncallback=1",
-             responseFileName: "recent_uploads_page\(page)_success.json")
+             responseFileName: "recent_uploads_page\(page)_success.json",
+            responseTime: responseTime)
     }
     
     static func stubSearchRequest() {
