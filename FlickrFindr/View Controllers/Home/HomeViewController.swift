@@ -130,15 +130,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
+    // MARK: CollectionView Layout
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let padding = CGFloat(10)
-        let numColumns = CGFloat(2)
-
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + padding)) / numColumns
+        
+        let cellPadding: CGFloat = 10
+        let numColumns: CGFloat = 2
+        let collectionViewPadding: CGFloat = 20
+        
+        // Size the cells to always display two columns in portrait mode
+        let collectionViewPortraitWidth: CGFloat = min(view.frame.width, view.frame.height) - collectionViewPadding
+        
+        let itemSize = (collectionViewPortraitWidth - cellPadding) / numColumns
 
         return CGSize(width: itemSize, height: itemSize)
     }
+    
+    // MARK: CollectionView Delegate Methods
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
