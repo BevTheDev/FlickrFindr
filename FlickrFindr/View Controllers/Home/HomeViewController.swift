@@ -134,13 +134,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellPadding: CGFloat = 10
-        let numColumns: CGFloat = 2
         let collectionViewPadding: CGFloat = 20
-        
-        // Size the cells to always display two columns in portrait mode
+
         let collectionViewPortraitWidth: CGFloat = min(view.frame.width, view.frame.height) - collectionViewPadding
         
+        let numColumns: CGFloat = floor(collectionViewPortraitWidth / 150)
+        let cellPadding: CGFloat = 10 * (numColumns - 1)
+
         let itemSize = (collectionViewPortraitWidth - cellPadding) / numColumns
 
         return CGSize(width: itemSize, height: itemSize)
