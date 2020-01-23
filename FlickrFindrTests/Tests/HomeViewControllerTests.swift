@@ -107,12 +107,7 @@ class HomeViewControllerTests: BaseTestCase {
         testVC.loadView()
         testVC.searchBar.text = ""
         
-        let performSearchExpectation = expectation(description: "performSearch should be called")
-        testVC.performSearchExpectation = performSearchExpectation
-        
         testVC.didSelectSearchTerm(searchTerm: "test1")
-        
-        wait(for: [performSearchExpectation], timeout: 1)
         
         XCTAssertEqual(testVC.searchBar.text, "test1")
     }

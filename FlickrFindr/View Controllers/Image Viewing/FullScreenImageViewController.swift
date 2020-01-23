@@ -85,7 +85,7 @@ class FullScreenImageViewController: UIViewController, SpinnerShowable {
         
         if UIDevice.current.orientation.isPortrait {
             
-            imageTopConstraint.constant = 90
+            imageTopConstraint.constant = 134
             imageBottomConstraint.constant = 90
             imageLeadingConstraint.constant = 0
             imageTrailingConstraint.constant = 0

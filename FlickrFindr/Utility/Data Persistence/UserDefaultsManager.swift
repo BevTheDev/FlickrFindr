@@ -30,7 +30,6 @@ class UserDefaultsManager {
         }
         
         searches.append(term)
-        print("Saving: \(searches)")
         
         UserDefaults.standard.set(searches, forKey: Constants.UserDefaults.recentsKey)
         UserDefaults.standard.synchronize()
@@ -39,7 +38,6 @@ class UserDefaultsManager {
     static func getRecentSearches() -> [String] {
         
         let searches = (UserDefaults.standard.value(forKey: Constants.UserDefaults.recentsKey) as? [String]) ?? []
-        print("Loading: \(searches)")
         return searches
     }
 }

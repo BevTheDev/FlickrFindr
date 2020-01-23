@@ -34,7 +34,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var photoPages: [PhotoPage] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                if self.photos.isEmpty {
+                    self.collectionView.reloadData()
+                }
+                else {
+                    let totalPhotos = self.photos.count
+                    let lastPagePhotos = self.photoPages.last?.photos.count ?? 0
+                    
+                    let startIndex = totalPhotos - lastPagePhotos
+                    let endIndex = totalPhotos - 1
+                    
+                    let indexPaths = Array(startIndex...endIndex).map { IndexPath(item: $0, section: 0) }
+                    self.collectionView.insertItems(at: indexPaths)
+                }
             }
         }
     }
@@ -161,6 +173,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         searchBar.resignFirstResponder()
+        updateCancelButtonStatus()
     }
     
     // MARK: - Search
@@ -200,7 +213,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func didSelectSearchTerm(searchTerm: String) {
         
         searchBar.text = searchTerm
-        performSearch()
     }
     
     // MARK: Search Logic
@@ -209,13 +221,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         photoPages = []
         searchBar.resignFirstResponder()
+        updateCancelButtonStatus()
         
         loadPhotos(forSearchTerm: searchBar.text)
         
         if let searchTerm = searchBar.text, !searchTerm.isEmpty {
             
             UserDefaultsManager.saveNewSearchTerm(term: searchTerm)
-            
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    func updateCancelButtonStatus() {
+        
+        if let searchTerm = searchBar.text, !searchTerm.isEmpty {
             // Keep the cancel button enabled during search mode
             searchBar.setCancelEnabled(true)
         }
