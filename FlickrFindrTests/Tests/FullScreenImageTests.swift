@@ -25,7 +25,25 @@ class FullScreenImageTests: BaseTestCase {
         waitThenContinue(after: 0.3)
         XCTAssertEqual(testVC.titleLabel.text, photo.title)
         XCTAssertFalse(testVC.titleBackdrop.isHidden)
+        XCTAssertTrue(testVC.unavailableLabel.isHidden)
         XCTAssertNotNil(testVC.imageView.image)
+    }
+
+    func testHandlesLoadError() {
+        
+        NetworkMocker.stubFullScreenImageRequestWithError()
+        
+        guard let photo = ModelFactory.generatePhoto() else {
+            XCTFail("Could not generate photo")
+            return
+        }
+        
+        let testVC = FullScreenImageViewController(withPhoto: photo)
+        testVC.triggerOpeningLifecycle()
+        
+        waitThenContinue(after: 0.3)
+        XCTAssertFalse(testVC.unavailableLabel.isHidden)
+        XCTAssertNil(testVC.imageView.image)
     }
     
     func testHidesEmptyTitleBackdrop() {

@@ -37,4 +37,11 @@ extension NetworkMocker {
         stub(forPath: "/444/123_secret123_z.jpg",
         responseFileName: "cat.jpg")
     }
+    
+    static func stubFullScreenImageRequestWithError() {
+        
+        stub(forPath: "/444/123_secret123_z.jpg",
+        responseFileName: "no_results.json",
+        responseStatus: 503)
+    }
 }

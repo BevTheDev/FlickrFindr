@@ -13,6 +13,7 @@ class FullScreenImageViewController: UIViewController, SpinnerShowable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleBackdrop: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var unavailableLabel: UILabel!
     
     @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageBottomConstraint: NSLayoutConstraint!
@@ -42,6 +43,7 @@ class FullScreenImageViewController: UIViewController, SpinnerShowable {
         
         setUpUI()
         addTitleShadow()
+        unavailableLabel.isHidden = true
         
         titleLabel.text = photo.title
         titleBackdrop.isHidden = photo.title.isEmpty
@@ -67,8 +69,13 @@ class FullScreenImageViewController: UIViewController, SpinnerShowable {
         showActivitySpinner(fromView: imageView)
         
         print("Loading fullscreen image: \(imageUrl)")
-        imageView.loadWebImage(fromUrl: imageUrl) {
+        imageView.loadWebImage(fromUrl: imageUrl) { success in
+            
             self.hideActivitySpinner()
+            
+            if !success {
+                self.unavailableLabel.isHidden = false
+            }
         }
     }
     
