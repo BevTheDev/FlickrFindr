@@ -15,21 +15,20 @@ class NetworkMocker {
     // MARK: - Add/Remove All Stubs
     
     static func stubAllRequestsWithFailure() {
-        
-        let stubAllBlock: OHHTTPStubsTestBlock = { _ -> Bool in
+        let stubAllBlock: HTTPStubsTestBlock = { _ -> Bool in
             return true
         }
         
-        let standardResponseBlock: OHHTTPStubsResponseBlock = { _ -> OHHTTPStubsResponse in
-             return OHHTTPStubsResponse(jsonObject: ["stub": "This request has been stubbed"], statusCode: 500, headers: nil)
+        let standardResponseBlock: HTTPStubsResponseBlock = { _ -> HTTPStubsResponse in
+             return HTTPStubsResponse(jsonObject: ["stub": "This request has been stubbed"], statusCode: 500, headers: nil)
         }
         
-        OHHTTPStubs.stubRequests(passingTest: stubAllBlock, withStubResponse: standardResponseBlock)
+        HTTPStubs.stubRequests(passingTest: stubAllBlock, withStubResponse: standardResponseBlock)
     }
     
     static func removeAllStubs() {
         
-        OHHTTPStubs.removeAllStubs()
+        HTTPStubs.removeAllStubs()
     }
     
     // MARK: - Default Stubs
@@ -60,9 +59,9 @@ class NetworkMocker {
         
         let testBlock = compareRequestSignatures(stubSignature)
         
-        let responseStub: OHHTTPStubsResponseBlock = { _ in
+        let responseStub: HTTPStubsResponseBlock = { _ in
             
-            let response = OHHTTPStubsResponse(
+            let response = HTTPStubsResponse(
                 fileAtPath: attemptToGetFilePath(withFilename: responseFileName),
                 statusCode: Int32(responseStatus),
                 headers: [:]
@@ -72,7 +71,7 @@ class NetworkMocker {
             return response
         }
         
-        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseStub)
+        HTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseStub)
     }
     
     // MARK: - Helpers
@@ -86,7 +85,7 @@ class NetworkMocker {
         return filePath
     }
     
-    static private func compareRequestSignatures(_ stubSignature: RequestSignature) -> OHHTTPStubsTestBlock {
+    static private func compareRequestSignatures(_ stubSignature: RequestSignature) -> HTTPStubsTestBlock {
         
         return { request in
             
