@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9699AA9723D279BA004FA1C1"
-               BuildableName = "FlickrFindr.app"
+               BuildableName = "Flickr Findr.app"
                BlueprintName = "FlickrFindr"
                ReferencedContainer = "container:FlickrFindr.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9699AA9723D279BA004FA1C1"
-            BuildableName = "FlickrFindr.app"
+            BuildableName = "Flickr Findr.app"
             BlueprintName = "FlickrFindr"
             ReferencedContainer = "container:FlickrFindr.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9699AA9723D279BA004FA1C1"
-            BuildableName = "FlickrFindr.app"
+            BuildableName = "Flickr Findr.app"
             BlueprintName = "FlickrFindr"
             ReferencedContainer = "container:FlickrFindr.xcodeproj">
          </BuildableReference>
