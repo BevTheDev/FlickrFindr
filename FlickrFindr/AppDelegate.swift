@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let isRunningUnitTests = NSClassFromString("XCTest") != nil
+        if isRunningUnitTests {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.backgroundColor = .white
+            
+            window?.rootViewController = UIViewController()
+            window?.makeKeyAndVisible()
+            return true
+        }
+        
         // The HomeVC will display a paged list of recent uploads. This works without the
         // stub, but occasionally returns some... rather awkward results :/
         // So this replaces the real network response with two pages of demo-safe images.
