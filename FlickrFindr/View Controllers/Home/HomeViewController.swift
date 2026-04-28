@@ -34,19 +34,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var photoPages: [PhotoPage] = [] {
         didSet {
             DispatchQueue.main.async {
-                if self.photos.isEmpty {
-                    self.collectionView.reloadData()
-                }
-                else {
-                    let totalPhotos = self.photos.count
-                    let lastPagePhotos = self.photoPages.last?.photos.count ?? 0
-                    
-                    let startIndex = totalPhotos - lastPagePhotos
-                    let endIndex = totalPhotos - 1
-                    
-                    let indexPaths = Array(startIndex...endIndex).map { IndexPath(item: $0, section: 0) }
-                    self.collectionView.insertItems(at: indexPaths)
-                }
+                self.collectionView.reloadData()
             }
         }
     }
